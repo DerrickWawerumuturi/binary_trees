@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/User/Binary trees/binary_trees",
-      "program": "c:/Users/User/Binary trees/binary_trees/build/Debug/outDebug",
+      "cwd": "c:/Windows/system32/Betty",
+      "program": "c:/Windows/system32/Betty/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
