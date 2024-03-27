@@ -1,33 +1,35 @@
 #include "binary_trees.h"
 
 /**
- * binary_tree_insert_left - inserts node to left of parent
- * @parent: the node in which its left is inserted
- * @value: data stored in the new node
- * Return: pointer to the new node
-*/
+ * binary_tree_insert_left - Inserts a node as a left-child of
+ *                           of another in a binary tree.
+ * @parent: A pointer to the node to insert the left-child in.
+ * @value: The value to store in the new node.
+ *
+ * Return: If parent is NULL or an error occurs - NULL.
+ *         Otherwise - a pointer to the new node.
+ *
+ * Description: If parent already has a left-child, the new node
+ *              takes its place and the old left-child is set as
+ *              the left-child of the new node.
+ */
+binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value)
+{
+	binary_tree_t *new;
 
-binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value) {
-
-	binary_tree_t* temp;
-
-	binary_tree_t* newnode = (binary_tree_t*)malloc(sizeof(binary_tree_t));
 	if (parent == NULL)
-		return NULL;
-	newnode->n = value;
-	newnode->left = newnode->right = NULL;
-	if (parent->left == NULL) {
-		newnode->parent = parent;
-		parent->left = newnode;
-		return newnode;
-	}
-	else {
-		temp  = parent->left;
-		newnode->parent = parent;
-		parent->left = newnode;
-		newnode->left = temp;
-		return newnode;
-	}
+		return (NULL);
 
+	new = binary_tree_node(parent, value);
+	if (new == NULL)
+		return (NULL);
 
+	if (parent->left != NULL)
+	{
+		new->left = parent->left;
+		parent->left->parent = new;
+	}
+	parent->left = new;
+
+	return (new);
 }
